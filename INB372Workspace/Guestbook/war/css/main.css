@@ -1,0 +1,287 @@
+/* CSS Document */
+
+/*
+Formatting for the body of the page. Sets the background colour to black, the font family to arial 
+and the minimum width of the page to 760px. Any further shrinking will simply add a horizontal scrollbar.
+*/
+body {
+	min-width: 760px;
+	background-color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 99%;
+	padding: 0px;
+	margin: 0px;
+	color: #FFFFFF;
+}
+.wrapper .content .sidebox table {
+	margin-left: 50px;
+}
+
+
+/* Set the page height to 100% to give a relative ranking to specific divs. */
+html {
+	height: 100%;
+}
+
+/*
+Formatting for the wrapper div. Sets the width of the page to 90% of the screen
+and centers the page in the browser.
+*/
+div.wrapper {
+	width: 90%;
+	max-width: 1300px;
+	min-width: 800px;
+	height: 100%;
+	background-color: #1E1F67;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+
+/*
+Formatting for the header of the page. Adds a repeating background which will 
+expand as the width of the page increases.
+*/
+div.header {
+	text-align: center;
+	background-image: url(../images/banner_background.png);
+	background-repeat: no-repeat;
+	height: 150px;
+}
+
+/* Formatting for the menu on the page. Centers all elements in the div. */
+div.menu {
+	text-align: center;
+}
+
+/*
+Formatting for the content div. Adds a repeating background to the content of the page,
+and sets the minimum height of the div to the height of the image.
+*/
+div.content {
+	min-height: 444px;
+	background-repeat: repeat-x;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+	background-color: #1E1F67;
+}
+
+/* Formatting for 'Heading 1' in the content div. */
+div.content h1 {
+	font-size: large;
+	color: #FFFF00;
+	margin: 0px;
+}
+
+/* Formatting for 'Heading 2' in the content div. */
+div.content h2 {
+	font-size: medium;
+	color: #FFFFFF;
+}
+
+/* Formatting for the Container */
+div.container {
+	padding-left: 30px;
+	height: 100%;
+}
+
+/* Formatting for the paragraphs within the container */
+div.container p {
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-right: 20px;
+}
+
+/* Formatting for the sidebox div. The sidebox div is given a large border. */
+div.sidebox {
+	font-size: small;
+	padding-top: 0px;
+	margin: 15px;
+	margin-top: 5px;
+	margin-left: 0px;
+	margin-right: 0px;
+	border: 4px solid #00376F;
+	background-color: #000033;
+} 
+
+/* Formatting for 'Heading 1' in the sidebox div. Heading is centered and bolded. */
+div.sidebox h1 {
+	/* Measures */
+	height: 25px;
+	padding: 20px;
+	padding-top: 15px;
+	padding-left: 10px;
+	/* Font Styling */
+	color: #FFFF60; 
+	font-size: large;
+	font-weight: bolder;
+	/* Background Information */
+	background-repeat: repeat-x;
+	/*background-image: url(../images/shop/boxImgBlue.png);*/
+}
+
+/* Formatting for 'Heading 2' in the sidebox div. Changes color and removes vertical margins. */
+div.sidebox h2 {
+	font-size: medium;
+	color: #FFFF75;
+	margin: 10px;
+	margin-bottom: 0px;
+}
+
+/* Formatting for paragraphs in the sidebox div. Text size is made small and the top margin is removed. */
+div.sidebox p {
+	margin: 10px;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	font-size: medium;
+}
+
+/* The overall table style used to display page information. */
+#gradient-style
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	text-align: left;
+	border-collapse: collapse;
+	margin-top: 20px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+
+/* The table heading formatting, including background gradient image. */
+#gradient-style th
+{
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	border-top: 2px solid #d3ddff;
+	border-bottom: 1px solid #666;
+	color: #CEDEFF;
+	background-image: url(../images/gradhead.png);
+	background-repeat: repeat-x;
+	background-color: #CEE1FF;
+}
+
+/* The formatting for individual columns in the table. */
+#gradient-style td
+{
+	padding: 8px;
+	border-bottom: 1px solid #809CFF;
+	color: #ACB7CA;
+	border-top: 1px solid #fff;
+	background-color: #000000;
+	background-repeat: repeat-x;
+}
+
+/* Formatting used throughout the table. */
+#gradient-style tfoot tr td
+{
+	background: #e8edff;
+	font-size: 12px;
+	color: #99c;
+}
+
+/* Format shown when a table row is being hovered over. */
+#gradient-style tbody tr:hover td
+{
+	color: #5577FF;
+	background-color: #000033;
+	background-repeat: repeat-x;
+}
+
+/* The style used to display the page headers for the website. */
+.style29 {
+	font-variant: normal; 
+	font-size: large;
+}
+
+/* The class used to display a student who has a birthday on the given day. */
+.birthday {
+	font-size: 24px;
+	font-weight: bolder;
+	color: #FF6600;
+}
+
+/* The class used to hold the image representing the bar of completed tables. */
+.wrapper .content .challenge {
+	width: 300px;
+	height: 30px;
+	background-color: #0066FF;
+}
+
+/* The class used to display who the previous winner was for the game. */
+.winners {
+	font-size: 18px;
+	font-weight: bolder;
+	color: #FF6600;
+}
+
+/* Formatting used for each of the hyperlinks on the page. */
+.hyper {
+	color: #5398FF;
+	text-decoration: underline;
+	font-size: 15px;
+}
+
+/* Formatting used for each of the hyperlinks on the page. */
+.mathhyper {
+	color: #FFFFFF;
+	text-decoration: underline;
+	font-size: 15px;
+}
+
+/* Link class. Used to format any links which are present in the page. */
+.link {
+	color: #C27A01;
+	font-weight: bolder;
+}
+
+/* Provide an appropriate width for the buttons. */
+.wrapper .content .sidebox select {
+	width: 150px;
+	margin: 5px;
+}
+
+/* Provide an appropriate width for the input boxes. */
+.wrapper .content .sidebox input {
+	width: 150px;
+	margin: 2px;
+}
+s
+.formsetup {
+	width: 100px;
+	margin: 5px;
+}
+
+.fright {
+	float: right;
+	margin-right: 5px;
+}
+
+.dataform {
+	margin-left: 50px;
+}
+
+.wrapper .content .item {
+	width: 190px;
+	/*height: 190px;*/
+	margin: 40px;
+	margin-top: 0px;
+	margin-bottom: 50px;
+	vertical-align: middle;
+	text-align: center;
+	float: left;
+	padding-top: 20px;
+}
+
+.bimage {
+	border-style: outset;
+	border-color: #0066FF;
+}
+
+.tableborder {
+	border: 1px solid #FFFF66;
+}
