@@ -41,7 +41,7 @@ public class Calculator {
 	
 	// The angle of facing (north is 0 degrees).
 	private double panelDegreeFacing;
-	
+
 	// Hours of daylight.
 	private double hoursOfDaylight;
 	
@@ -64,7 +64,9 @@ public class Calculator {
 	 * Calculator constructor. Stores all user inputs to allow for calculations
 	 * to be performed.
 	 */
-	public Calculator(double watts, double elevationAngle, double facingAngle, double daylight, double electricityCost, double dailyUsage, double tariff) {
+	public Calculator(double watts, double elevationAngle, double facingAngle, double daylight, double electricityCost, double dailyUsage, double tariff) throws CalculatorException {
+		// Probably needs some input checking
+		if (false) throw new CalculatorException("Exception!");
 		panelWattage = watts;
 		angleOfInstallation = elevationAngle;
 		panelDegreeFacing = facingAngle;
@@ -82,7 +84,8 @@ public class Calculator {
 	 * Precondition: None.
 	 * Postcondition: The list will be summed and the result returned.
 	 */
-	public double sumResult(double[] result) {
+	public double sumResult(double[] result) throws CalculatorException {
+		if (result == null) throw new CalculatorException("Provided result is null");
 		double sum = 0;
 		for (int i = 0; i < result.length; i++) {
 			sum += result[i];
@@ -97,7 +100,9 @@ public class Calculator {
 	 * Precondition: A list of yearly figures is given.
 	 * Postcondition: The average daily figure is returned.
 	 */
-	public double calculateDailyAverage(double[] result) {
+	public double calculateDailyAverage(double[] result) throws CalculatorException {
+		if (result == null) throw new CalculatorException("Result is null");
+		if (result.length <= 0) throw new CalculatorException("Result length cannot be zero: divide by zero error.");
 		double total = sumResult(result);
 		double dailyAverage = total / (DAYS_IN_YEAR * result.length);
 		return dailyAverage;
@@ -110,7 +115,8 @@ public class Calculator {
 	 * Precondition: The unit power (in watts) is specified.
 	 * Postcondition: A list of yearly expected generations is returned.
 	 */
-	public double[] getLifetimeElectricityGeneration(double unitPower) {
+	public double[] getLifetimeElectricityGeneration(double unitPower) throws CalculatorException {
+		if (false) throw new CalculatorException("Math.");
 		double[] electricity = new double[LIFESPAN];
 		for (int i = 0; i < LIFESPAN; i++) {
 			electricity[i] = Math.round(getElectricityGeneration(panelWattage, i));
@@ -125,8 +131,15 @@ public class Calculator {
 	 * Precondition: A list of yearly power generations, and the cost of power is given.
 	 * Postcondition: A list representing total yearly expected savings is returned.
 	 */
-	public double[] getLifetimeCostSavings(double[] powerGeneration) {
+	public double[] getLifetimeCostSavings(double[] powerGeneration) throws CalculatorException {
+		if (powerGeneration == null)
+			throw new CalculatorException("powerGeneration is null");
+		
 		double[] costSavings = new double[LIFESPAN];
+
+		if (powerGeneration.length != costSavings.length)
+			throw new CalculatorException("powerGeneration and costSavings arrays are of different lengths");
+
 		for (int i = 0; i < LIFESPAN; i++) {
 			costSavings[i] = powerGeneration[i] * costPerWatt;
 		}
@@ -140,8 +153,15 @@ public class Calculator {
 	 * Precondition: A list of yearly power savings is given.
 	 * Postcondition: A list of yearly carbon savings is returned.
 	 */
-	public double[] getLifetimeCarbonSavings(double[] powerGeneration) {
+	public double[] getLifetimeCarbonSavings(double[] powerGeneration) throws CalculatorException {
+		if (powerGeneration == null)
+			throw new CalculatorException("powerGeneration is null");
+		
 		double[] carbonSavings = new double[LIFESPAN];
+
+		if (powerGeneration.length != carbonSavings.length)
+			throw new CalculatorException("powerGeneration and carbonSavings arrays are of different lengths");
+
 		for (int i = 0; i < LIFESPAN; i++) {
 			carbonSavings[i] = powerGeneration[i] * CARBON_SAVINGS_PER_WATT;
 		}
@@ -154,11 +174,13 @@ public class Calculator {
 	 * Precondition: Takes an interest rate (E.g. 1.05 is 5%).
 	 * Postcondition: Returns the new total money from the investment.
 	 */
-	public double getInvestmentReturnFromBank(double interestRate) {
+	public double getInvestmentReturnFromBank(double interestRate) throws CalculatorException {
+		if (false) throw new CalculatorException("Math");
 		return systemCost * Math.pow(interestRate, LIFESPAN);
 	}
 	
-	public double[] getYearlyInvestmentFromBank(double interestRate) {
+	public double[] getYearlyInvestmentFromBank(double interestRate) throws CalculatorException {
+		if (false) throw new CalculatorException("Math");
 		double[] returns = new double[LIFESPAN];
 		returns[0] = systemCost;
 		for (int i = 1; i < LIFESPAN; i++) {
@@ -175,14 +197,31 @@ public class Calculator {
 	 * Postcondition: A value representing the total investment return (subtracting
 	 * the cost of the panels) is returned.
 	 */
-	public double getIvestmentReturnFromPanels(double[] savings) {
+	public double getIvestmentReturnFromPanels(double[] savings) throws CalculatorException {
+		if (savings == null)
+			throw new CalculatorException("savings array is null");
+		
 		double[] yearlyReturns = getYearlyInvestmentFromPanels(savings);
+		if (yearlyReturns == null)
+			throw new CalculatorException("yearlyReturns is null");
+		
 		return yearlyReturns[LIFESPAN - 1];
 	}
 	
-	public double[] getYearlyInvestmentFromPanels(double[] savings) {
+	public double[] getYearlyInvestmentFromPanels(double[] savings) throws CalculatorException {
+		if (savings == null)
+			throw new CalculatorException("savings array is null");
+
+		if (savings.length < 1)
+			throw new CalculatorException("savings array is empty");
+
 		double[] returns = new double[LIFESPAN];
+
+		if (returns.length != savings.length)
+			throw new CalculatorException("savings and returns arrays are of different lengths");
+
 		returns[0] = -systemCost + savings[0];
+		
 		for (int i = 1; i < LIFESPAN; i++) {
 			returns[i] = returns[i - 1] + savings[i];
 			if (returns[i] > 0) returns[i] *= COMPARISON_INTEREST_RATE;
@@ -198,7 +237,10 @@ public class Calculator {
 	 * Postcondition: Returns a value representing the number of years needed
 	 * for the product to break even from setup costs.
 	 */
-	public double calculateBreakEven(double[] savings) {
+	public double calculateBreakEven(double[] savings) throws CalculatorException {
+		if (savings == null)
+			throw new CalculatorException("savings is null");
+		
 		double remainingCost = systemCost;
 		for (int i = 0; i < LIFESPAN; i++) {
 			if (remainingCost <= 0) return i;
@@ -214,7 +256,10 @@ public class Calculator {
 	 * Precondition: A list representing yearly power generation is given.
 	 * Postcondition: A list representing yearly earnings from excess power is returned.
 	 */
-	public double[] calculateExcessPowerEarnings(double[] power) {
+	public double[] calculateExcessPowerEarnings(double[] power) throws CalculatorException {
+		if (power == null)
+			throw new CalculatorException("power is null");
+		
 		double[] excess = new double[power.length];
 		for (int i = 0; i < LIFESPAN; i++) {
 			excess[i] = (power[i] - electricityGeneration) * feedInTariff;
@@ -230,7 +275,10 @@ public class Calculator {
 	 * Precondition: A list representing yearly power generation is given.
 	 * Postcondition: A list representing yearly excess power generation is returned.
 	 */
-	public double[] calculateExcessPowerGeneration(double[] power) {
+	public double[] calculateExcessPowerGeneration(double[] power) throws CalculatorException {
+		if (power == null)
+			throw new CalculatorException("power is null");
+		
 		double[] excess = new double[power.length];
 		for (int i = 0; i < LIFESPAN; i++) {
 			excess[i] = (power[i] - electricityGeneration);
@@ -247,8 +295,14 @@ public class Calculator {
 	 * Postcondition: Returns a percentage representing the amount of power
 	 * generated in respect to the amount used (over the lifetime of the product).
 	 */
-	public double getPanelGenerationPercent(double[] power) {
+	public double getPanelGenerationPercent(double[] power) throws CalculatorException {
 		
+		if (power == null)
+			throw new CalculatorException("power is null");
+
+		if (electricityGeneration == 0)
+			throw new CalculatorException("electricityGeneration is 0");
+
 		double totalPercent = 0;
 		for (int i = 0; i < LIFESPAN; i++) {
 			totalPercent += (power[i] / electricityGeneration);
@@ -265,12 +319,13 @@ public class Calculator {
 	 * Postcondition: The expected electricity generation over the year is returned.
 	 */
 	private double getElectricityGeneration(double unitPower, int yearsSinceInstall) {
-		unitPower *= getPanelDegradation(YEARLY_PANEL_DEGREDATION, yearsSinceInstall);
-		unitPower *= getElectricityModifierByAngle(angleOfInstallation);
-		unitPower *= getElectricityModifierByFacing(panelDegreeFacing);
-		unitPower *= hoursOfDaylight;
-		unitPower *= DAYS_IN_YEAR;
-		return unitPower;
+		double u = unitPower;
+		u *= getPanelDegradation(YEARLY_PANEL_DEGREDATION, yearsSinceInstall);
+		u *= getElectricityModifierByAngle(angleOfInstallation);
+		u *= getElectricityModifierByFacing(panelDegreeFacing);
+		u *= hoursOfDaylight;
+		u *= DAYS_IN_YEAR;
+		return u;
 	}
 	
 	/*
