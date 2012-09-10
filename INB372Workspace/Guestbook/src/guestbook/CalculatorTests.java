@@ -78,10 +78,10 @@ public class CalculatorTests {
 		calc.getYearlyInvestmentFromPanels(null);
 	}
 	
+	/* @TODO
+	 * Write test for divide by zero
 	@Test (expected=CalculatorException.class)
 	public void testCalculateDailyAverageDivideByZero() throws CalculatorException {
-		/* @TODO
-		 * Write test for divide by zero
-		 */
 	}
+	 */
 }
