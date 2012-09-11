@@ -77,6 +77,9 @@ public class Calculator {
 		electricityGeneration = dailyUsage * DAYS_IN_YEAR * 1000;
 	}
 	
+	public Calculator() {
+	}
+	
 	/*
 	 * Takes the yearly figures from a result and converts it into a single
 	 * total for the lifetime of the product.
