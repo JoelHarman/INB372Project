@@ -120,6 +120,7 @@ public class Calculator {
 	 */
 	public double[] getLifetimeElectricityGeneration(double unitPower) throws CalculatorException {
 		if (false) throw new CalculatorException("Math.");
+		if (panelWattage < 0) throw new CalculatorException("Wattage cannot be negative.");
 		double[] electricity = new double[LIFESPAN];
 		for (int i = 0; i < LIFESPAN; i++) {
 			electricity[i] = Math.round(getElectricityGeneration(panelWattage, i));
@@ -138,6 +139,8 @@ public class Calculator {
 		if (powerGeneration == null)
 			throw new CalculatorException("powerGeneration is null");
 		
+		if (costPerWatt < 0)
+			throw new CalculatorException("Power cost must be non-negative.");
 		double[] costSavings = new double[LIFESPAN];
 
 		if (powerGeneration.length != costSavings.length)
@@ -178,12 +181,12 @@ public class Calculator {
 	 * Postcondition: Returns the new total money from the investment.
 	 */
 	public double getInvestmentReturnFromBank(double interestRate) throws CalculatorException {
-		if (false) throw new CalculatorException("Math");
+		if (interestRate < 0) throw new CalculatorException("Investment rate must be positive.");
 		return systemCost * Math.pow(interestRate, LIFESPAN);
 	}
 	
 	public double[] getYearlyInvestmentFromBank(double interestRate) throws CalculatorException {
-		if (false) throw new CalculatorException("Math");
+		if (interestRate < 0) throw new CalculatorException("Investment rate must be positive.");
 		double[] returns = new double[LIFESPAN];
 		returns[0] = systemCost;
 		for (int i = 1; i < LIFESPAN; i++) {
@@ -244,6 +247,7 @@ public class Calculator {
 		if (savings == null)
 			throw new CalculatorException("savings is null");
 		
+		if (savings.length == 0) throw new CalculatorException("Savings list must be populated.");
 		double remainingCost = systemCost;
 		for (int i = 0; i < LIFESPAN; i++) {
 			if (remainingCost <= 0) return i;
@@ -262,6 +266,8 @@ public class Calculator {
 	public double[] calculateExcessPowerEarnings(double[] power) throws CalculatorException {
 		if (power == null)
 			throw new CalculatorException("power is null");
+		
+		if (power.length == 0) throw new CalculatorException("Power list must be populated.");
 		
 		double[] excess = new double[power.length];
 		for (int i = 0; i < LIFESPAN; i++) {
@@ -305,6 +311,8 @@ public class Calculator {
 
 		if (electricityGeneration == 0)
 			throw new CalculatorException("electricityGeneration is 0");
+		
+		if (power.length == 0) throw new CalculatorException("Power list must be populated.");
 
 		double totalPercent = 0;
 		for (int i = 0; i < LIFESPAN; i++) {
