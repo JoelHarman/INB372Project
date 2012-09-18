@@ -14,6 +14,7 @@
 	    <style type="text/css">
 <!--
 .style30 {color: #CC9900}
+.style31 {font-size: medium}
 -->
         </style>
 </head>
@@ -109,31 +110,52 @@
                       <td><input name="elevation" type="text" value="10" /></td>
                     </tr>
                     <tr>
-                      <td class="dataform">Average Hours of Daylight: </td>
-                      <td><input name="daylight" type="text" value="8" /></td>
+                      <td class="dataform">Location: </td>
+                      <td><select name="daylight">
+                        <option value="7.5">Queensland</option>
+                        <option value="7">Sydney</option>
+                        <option value="5.5">Melbourne</option>
+                        <option value="6.5">South Australia</option>
+                        <option value="8">Western Australia</option>
+                      </select></td>
                     </tr>
                   </table>
                   <p>&nbsp;</p>
                   <p class="winners">Step 3: Enter Electricity Specifications</p>
                   <p>The section below deals with inputting your electricity specifications to provide accurate estimations of the product's effectiveness. </p>
                   <table width="600" border="0" cellpadding="5" class="dataform">
-                    <tr>
+                    <!--<tr>
                       <td width="290" class="dataform">Electricity Cost (Per Kilowatt):</td>
                       <td width="284">
                         <input name="electricityCost" type="text" id="electricityCost" value="0.13" />
                       </td>
-                    </tr>
+                    </tr>-->
                     <tr>
-                      <td class="dataform">Estimated Daily  Usage (In Kilowatts): </td>
-                      <td><input name="dailyUsage" type="text" id="dailyUsage" value="16" /></td>
+                      <td width="291" class="dataform">Estimated Daily  Usage (In Kilowatts): </td>
+                      <td width="283"><input name="dailyUsage" type="text" id="dailyUsage" value="16" /></td>
                     </tr>
                     <tr>
                       <td class="dataform">Electricity Feed-In Tariff: </td>
-                      <td><input name="feedInTariff" type="text" id="feedInTariff" value="0.5" /></td>
+                      <td><input name="feedInTariff" type="text" id="feedInTariff" value="0.2" /></td>
                     </tr>
                   </table>
                   <p>&nbsp;</p>
-                  <p class="winners">Step 4: Calculate Results </p>
+                  <p><span class="winners style31">Step 4: Existing User</span></p>
+                  <p>This section allows existing users to enter how long they have had their panels for. If a time period is specified, a seperate section will be added to the results showing summaries with the returns to date. </p>
+                  <table width="600" border="0" cellpadding="5" class="dataform">
+                    <!--<tr>
+                      <td width="290" class="dataform">Electricity Cost (Per Kilowatt):</td>
+                      <td width="284">
+                        <input name="electricityCost" type="text" id="electricityCost" value="0.13" />
+                      </td>
+                    </tr>-->
+                    <tr>
+                      <td width="291" class="dataform">Panel Age:</td>
+                      <td width="283"><input name="panelAge" type="text" id="panelAge" value="0" /></td>
+                    </tr>
+                  </table>
+                  <p>&nbsp;</p>
+                  <p class="winners">Step 5: Calculate Results </p>
                   <p>When you are satisfied with the options you have specified above, click the button below to view information specific to your setup. </p>
                   <p>
                     <input name="Submit" type="submit" class="dataform" value="Calculate Results" />

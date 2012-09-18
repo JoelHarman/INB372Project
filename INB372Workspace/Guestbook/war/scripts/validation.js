@@ -28,6 +28,12 @@ function validateForm()
 		return false;
 	}
 	
+	// Check to ensure that an elevation is entered
+	if (CalculatorForm.panelAge.value == "") {
+		alert("Please enter a panel age (0 if new).");
+		return false;
+	}
+	
 	// Check to ensure that elevation is a number
 	if (isNaN(CalculatorForm.elevation.value)) { 
 		alert("The elevation value must be a number.");
@@ -49,6 +55,12 @@ function validateForm()
 	// Check to ensure that feed in tariff is a number
 	if (isNaN(CalculatorForm.feedInTariff.value)) { 
 		alert("The feed-in tariff value must be a number.");
+		return false;
+	}
+	
+	// Check to ensure that feed in tariff is a number
+	if (isNaN(CalculatorForm.panelage.value)) { 
+		alert("The panel age must be a number.");
 		return false;
 	}
 	
@@ -77,6 +89,13 @@ function validateForm()
 	var usageVal = CalculatorForm.electricityCost.value;
 	if (usageVal < 0) {
 		alert("The feed-in tariff must be non-negative.");
+		return false;	
+	}
+	
+	// Check to ensure the feed in tariff is non-negative.
+	var usageVal = CalculatorForm.panelAge.value;
+	if (usageVal < 0) {
+		alert("Panel age must be non-negative.");
 		return false;	
 	}
 	
