@@ -257,11 +257,10 @@ Years</span>.</div></th>
 				<h1>Panel Breakdown:</h1>
 				<p>In this setup, panels will account for 
 				  <span class="style32">
-				  <% out.print(Math.round(t.getPanelGenerationPercent(power))); %>
-				  %</span>
+				  <% out.print(Math.round(t.getPanelGenerationPercent(power))); %>%</span>
 				   of total expected power generation over their lifetime. To account for full power generation with these specifications over an extended period, a 
 				   <span class="style32">
-			      <% out.print(Math.round(panelGeneration * (90.0 / Math.round(t.getPanelGenerationPercent(power))))); %>Kw</span> 
+			       <% out.print(Math.round(panelGeneration * (90.0 / Math.round(t.getPanelGenerationPercent(power))))); %>Kw</span> 
 			      sized system would be needed. </p>
 				<p>Below is a year-by-year breakdown showing exactly how much excess power (and money) is generated over the life of the product. </p>
 		        <div align="center">

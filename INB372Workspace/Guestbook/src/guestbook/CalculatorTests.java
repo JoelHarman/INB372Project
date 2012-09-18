@@ -2,10 +2,8 @@ package guestbook;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Test.*;
 import static org.junit.Assert.*;
 
@@ -632,5 +630,175 @@ public class CalculatorTests {
 	public void testGetYearlyInvestmentFromPanelsNullPointer() throws CalculatorException {
 		calc = new Calculator(1,1,1,1,1,1,1);
 		calc.getYearlyInvestmentFromPanels(null);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Panel wattage accessor test.
+	//-------------------------------------------------------------------------
+	public void testPanelWattageAccessor() throws CalculatorException {
+		calc = new Calculator(2000, 0, 10, 7, 0.5, 50, 0.5);
+		double wattage = calc.getPanelWattage();
+		assertEquals(2000, wattage, 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Panel installation angle accessor test.
+	//-------------------------------------------------------------------------
+	public void testPanelInstallationAngleAccessor() throws CalculatorException {
+		calc = new Calculator(2000, 0, 10, 7, 0.5, 50, 0.5);
+		double angle = calc.getInstallationAngle();
+		assertEquals(0, angle, 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Panel facing accessor test.
+	//-------------------------------------------------------------------------
+	public void testPanelFacingAngleAccessor() throws CalculatorException {
+		calc = new Calculator(2000, 0, 10, 7, 0.5, 50, 0.5);
+		double angle = calc.getInstallationFacing();
+		assertEquals(10, angle, 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Panel daylight hours accessor test.
+	//-------------------------------------------------------------------------
+	public void testDaylightHoursAccessor() throws CalculatorException {
+		calc = new Calculator(2000, 0, 10, 7, 0.5, 50, 0.5);
+		double hours = calc.getHoursOfDaylight();
+		assertEquals(7, hours, 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Panel savings accessor test.
+	//-------------------------------------------------------------------------
+	public void testCostSavingsAccessor() throws CalculatorException {
+		calc = new Calculator(2000, 0, 10, 7, 0.5, 50, 0.5);
+		double savings = calc.getSavingsPerKilowatt();
+		assertEquals(0, savings, 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// System cost accessor test.
+	//-------------------------------------------------------------------------
+	public void testSystemCostAccessor() throws CalculatorException {
+		calc = new Calculator(2000, 0, 10, 7, 0.5, 50, 0.5);
+		double cost = calc.getSystemCost();
+		assertEquals(3000, cost, 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Cost per watt accessor test.
+	//-------------------------------------------------------------------------
+	public void testCostPerWattAccessor() throws CalculatorException {
+		calc = new Calculator(2000, 0, 10, 7, 500, 50, 500);
+		double tariff = calc.getCostPerWatt();
+		assertEquals(0.5, tariff, 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Electricity generation accessor test.
+	//-------------------------------------------------------------------------
+	public void testElectricityGenerationAccessor() throws CalculatorException {
+		calc = new Calculator(2000, 0, 10, 7, 500, 50, 500);
+		double tariff = calc.getElectricityGeneration();
+		assertEquals(18262500, tariff, 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Panel wattage mutator test.
+	//-------------------------------------------------------------------------
+	public void testPanelWattageMutator() throws CalculatorException {
+		calc = new Calculator();
+		calc.setPanelWattage(4555);
+		assertEquals(4555, calc.getPanelWattage(), 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Installation angle mutator test.
+	//-------------------------------------------------------------------------
+	public void testInstallationAngleMutator() throws CalculatorException {
+		calc = new Calculator();
+		calc.setInstallationAngle(22);
+		assertEquals(22, calc.getInstallationAngle(), 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Facing angle mutator test.
+	//-------------------------------------------------------------------------
+	public void testFacingAngleMutator() throws CalculatorException {
+		calc = new Calculator();
+		calc.setPanelFacing(27);
+		assertEquals(27, calc.getInstallationFacing(), 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Facing angle mutator test.
+	//-------------------------------------------------------------------------
+	public void testDaylightHoursMutator() throws CalculatorException {
+		calc = new Calculator();
+		calc.setDaylightHours(2.7);
+		assertEquals(2.7, calc.getHoursOfDaylight(), 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Savings per kilowatt mutator test.
+	//-------------------------------------------------------------------------
+	public void testSavingsPerKilowattMutator() throws CalculatorException {
+		calc = new Calculator();
+		calc.setSavingsPerKilowatt(16.5);
+		assertEquals(16.5, calc.getSavingsPerKilowatt(), 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// System cost mutator test.
+	//-------------------------------------------------------------------------
+	public void testSystemCostMutator() throws CalculatorException {
+		calc = new Calculator();
+		calc.setSystemCost(18523);
+		assertEquals(18523, calc.getSystemCost(), 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Feed-In tariff mutator test.
+	//-------------------------------------------------------------------------
+	public void testFeedInTariffMutator() throws CalculatorException {
+		calc = new Calculator();
+		calc.setFeedInTariff(0.93);
+		assertEquals(0.93, calc.getFeedInTariff(), 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Cost per watt mutator test.
+	//-------------------------------------------------------------------------
+	public void testCostPerWattMutator() throws CalculatorException {
+		calc = new Calculator();
+		calc.setCostPerWatt(15.5);
+		assertEquals(15.5, calc.getCostPerWatt(), 0.01);
+	}
+	
+	@Test
+	//-------------------------------------------------------------------------
+	// Electricity generation mutator test.
+	//-------------------------------------------------------------------------
+	public void testElectricityGenerationMutator() throws CalculatorException {
+		calc = new Calculator();
+		calc.setElectricityGeneration(20);
+		assertEquals(20, calc.getElectricityGeneration(), 0.01);
 	}
 }

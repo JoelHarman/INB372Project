@@ -36,7 +36,8 @@ function MM_PreloadNavigation()
 					 'images/navigationnew/typing-down.png',
 					 'images/navigationnew/challenge-down.png',
 					 'images/navigationnew/store-down.png',
-					 'images/navigationnew/login-down.png');
+					 'images/navigationnew/login-down.png',
+					 'images/navigationnew/info-down.png');
 }	
 
 
@@ -50,7 +51,8 @@ function MM_PreloadNavigationScoreboard()
 					 '../images/navigationnew/typing-down.png',
 					 '../images/navigationnew/challenge-down.png',
 					 '../images/navigationnew/store-down.png',
-					 '../images/navigationnew/login-down.png');
+					 '../images/navigationnew/login-down.png',
+					 '../images/navigationnew/info-down.png');
 }
 
 //-->
