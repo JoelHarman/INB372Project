@@ -23,9 +23,23 @@
 	double dailyUsage = Double.parseDouble(request.getParameter("dailyUsage"));
 	double feedInTariff = Double.parseDouble(request.getParameter("feedInTariff"));
 	int panelAge = (int)Double.parseDouble(request.getParameter("panelAge"));
-
+	double inverterEfficiency = Double.parseDouble(request.getParameter("inverter"));
+	double shadeFactor = Double.parseDouble(request.getParameter("shade"));
+	
+	String q = "&";
+	q += "radiobutton=" + panelGeneration + "&";
+	q += "elevation=" + panelElevation + "&";
+	q += "select=" + panelFacing + "&";
+	q += "daylight=" + daylight + "&";
+	q += "feedInTariff=" + electricityCost + "&";
+	q += "dailyUsage=" + dailyUsage + "&";
+	q += "feedInTariff=" + feedInTariff + "&";
+	q += "panelAge=" + panelAge + "&";
+	q += "inverter=" + inverterEfficiency + "&";
+	q += "shade=" + shadeFactor;
+	
 	// Store basic calculations
-	Calculator t = new Calculator(panelGeneration, panelElevation, panelFacing, daylight, electricityCost, dailyUsage, feedInTariff);
+	Calculator t = new Calculator(panelGeneration, panelElevation, panelFacing, daylight, electricityCost, dailyUsage, feedInTariff, inverterEfficiency, shadeFactor);
 	double[] power = t.getLifetimeElectricityGeneration(5000);
 	double[] savings = t.getLifetimeCostSavings(power);
 	double[] carbonSavings = t.getLifetimeCarbonSavings(power);
@@ -199,6 +213,7 @@
 						<th align="center"><strong>Power Generated</strong></td>
 						<th align="center"><strong>Money Saved</strong></td>
 						<th align="center"><strong>Carbon Saved</strong></td>
+						<th align="center"><strong></strong></td>
 					</tr>
 					</thead>
 						<%
@@ -209,6 +224,9 @@
 									out.print("<td align=\"center\">" + Math.round(power[i] / 1000) + "Kw" + "</td>");
 									out.print("<td align=\"center\">" + "$" + Math.round(savings[i]) + "</td>");
 									out.print("<td align=\"center\">" + Math.round(carbonSavings[i] / 100.0) / 10.0 + " tonnes" + "</td>");
+									
+									out.print("<td align=\"center\">" + "<a href=\"monthresults.jsp?year=" + i + q + "\">" + "<span class=\"hyper\">View</span>" + "</td>");
+									
 								out.print("</tr>");
 							}
 				
@@ -218,6 +236,7 @@
 							out.print("<td align=\"center\">" + Math.round(t.sumResult(power) / 1000) + "Kw" + "</td>");
 							out.print("<td align=\"center\">" + "$" + Math.round(t.sumResult(savings)) + "</td>");
 							out.print("<td align=\"center\">" + Math.round(t.sumResult(carbonSavings) / 100) / 10.0 + " tonnes" + "</td>");
+							out.print("<td align=\"center\">" + "</td>");
 							out.print("</tr>");
 						%>
 				  </table>

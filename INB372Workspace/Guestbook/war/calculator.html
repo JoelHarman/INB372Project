@@ -89,6 +89,20 @@
                   </table>
                   
                   <p>&nbsp;</p>
+                  <p>In addition to this, also enter the expected efficiency rate of the desired inverter.</p>
+                  <table width="600" border="0" cellpadding="5" class="dataform">
+                    <!--<tr>
+                      <td width="290" class="dataform">Electricity Cost (Per Kilowatt):</td>
+                      <td width="284">
+                        <input name="electricityCost" type="text" id="electricityCost" value="0.13" />
+                      </td>
+                    </tr>-->
+                    <tr>
+                      <td width="291" class="dataform">Inverter Efficiency: </td>
+                      <td width="283"><input name="inverter" type="text" id="inverter" value="0.95" /></td>
+                    </tr>
+                  </table>
+                  <p>&nbsp; </p>
                   <p class="winners">Step 2: Enter House Specifications</p>
                   <p>The section below deals with inputting the setup you want for the product. Rough estimates can be obtained by looking at your roof, and noting any suitable locations for installation. </p>
                   <table width="600" border="0" cellpadding="5" class="dataform">
@@ -112,12 +126,20 @@
                     <tr>
                       <td class="dataform">Location: </td>
                       <td><select name="daylight">
-                        <option value="7.5">Queensland</option>
-                        <option value="7">Sydney</option>
-                        <option value="5.5">Melbourne</option>
+                        <option value="7.5" selected="selected">Queensland</option>
+                        <option value="7">New South Wales</option>
+                        <option value="5.5">Victoria</option>
                         <option value="6.5">South Australia</option>
                         <option value="8">Western Australia</option>
                       </select></td>
+                    </tr>
+                    <tr>
+                      <td height="36" class="dataform">System Shade: </td>
+                      <td><select name="shade" id="shade">
+                        <option value="0.9" selected="selected">Low</option>
+                        <option value="0.7">Medium</option>
+                        <option value="0.5">High</option>
+                                            </select></td>
                     </tr>
                   </table>
                   <p>&nbsp;</p>

@@ -43,6 +43,8 @@ public class Calculator {
 	private double feedInTariff;			// The feed in tariff (per Watt).
 	private double costPerWatt;				// The cost of electricity (per watt).
 	private double electricityGeneration;	// Total electricity used by the household.
+	private double inverterEfficiency;		// The efficiency of the inverter (0-1).
+	private double shadeFactor;				// The amount of shade on the system (0-1).
 	
 	//-------------------------------------------------------------------------
 	// Calculator constructor. Stores all user inputs to allow for calculations
@@ -50,7 +52,8 @@ public class Calculator {
 	//-------------------------------------------------------------------------
 	public Calculator(double watts, double elevationAngle, double facingAngle, 
 					  double daylight, double electricityCost, double dailyUsage, 
-					  double tariff) throws CalculatorException {
+					  double tariff, double inverter, double shade) 
+													throws CalculatorException {
 
 		panelWattage = watts;
 		angleOfInstallation = elevationAngle;
@@ -60,6 +63,8 @@ public class Calculator {
 		costPerWatt = electricityCost / 1000;
 		feedInTariff = tariff / 1000;
 		electricityGeneration = dailyUsage * DAYS_IN_YEAR * 1000;
+		inverterEfficiency = inverter;
+		shadeFactor = shade;
 	}
 	
 	//-------------------------------------------------------------------------
@@ -75,6 +80,8 @@ public class Calculator {
 		feedInTariff = 0.2;
 		costPerWatt = 0.15;
 		electricityGeneration = 5844000;
+		inverterEfficiency = 0.95;
+		shadeFactor = 0.9f;
 	}
 	
 	//-------------------------------------------------------------------------
@@ -309,6 +316,8 @@ public class Calculator {
 		u *= getPanelDegradation(YEARLY_PANEL_DEGREDATION, yearsSinceInstall);
 		u *= getElectricityModifierByAngle(angleOfInstallation);
 		u *= getElectricityModifierByFacing(panelDegreeFacing);
+		u *= inverterEfficiency;
+		u *= shadeFactor;
 		u *= hoursOfDaylight;
 		u *= DAYS_IN_YEAR;
 		return u;
